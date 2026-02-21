@@ -28,6 +28,7 @@ The model predicts:
 - Stage 1
 - Stage 2
 - Stage 3
+- Stage 4
 
 ---
 
@@ -56,6 +57,7 @@ The model predicts:
    - Stage 1
    - Stage 2
    - Stage 3
+   - Stage 4
 5. The result is displayed in a modal popup.
 
 ---
