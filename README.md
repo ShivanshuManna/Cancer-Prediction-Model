@@ -1,103 +1,96 @@
-🧬 Cancer Risk Assessment Web Application
+# 🧬 Cancer Risk Assessment Web Application
 
-A Machine Learning based web application built using Flask that predicts cancer stage based on selected health and lifestyle factors.
+A Machine Learning based web application built using **Flask** that predicts cancer stage based on selected health and lifestyle factors.
 
-🚀 Overview
+---
+
+## 🚀 Overview
 
 This project uses a trained machine learning model to analyze user inputs and predict the cancer stage.
 
 The application provides a clean medical-style interface and displays results in a professional popup dialog.
 
-📊 Input Parameters
+---
+
+## 📊 Input Parameters
 
 The model takes the following inputs:
 
-Genetic Risk (0 – 10)
-
-Air Pollution Level (0 – 10)
-
-Alcohol Use (0 – 10)
-
-Smoking Level (0 – 10)
-
-Obesity Level (0 – 10)
+- Genetic Risk (0 – 10)
+- Air Pollution Level (0 – 10)
+- Alcohol Use (0 – 10)
+- Smoking Level (0 – 10)
+- Obesity Level (0 – 10)
 
 The model predicts:
 
-Stage 0
+- Stage 0
+- Stage 1
+- Stage 2
+- Stage 3
 
-Stage 1
+---
 
-Stage 2
+## 🛠️ Technologies Used
 
-Stage 3
+- Python  
+- Flask  
+- NumPy  
+- Scikit-learn  
+- HTML5  
+- CSS3  
+- Pickle  
 
-🛠️ Technologies Used
+---
 
-Python
 
-Flask
+---
 
-NumPy
+## ⚙️ How It Works
 
-Scikit-learn
+1. User enters health-related values.
+2. Data is sent to the Flask backend.
+3. The trained model predicts a numeric stage.
+4. A mapping function converts numeric output into:
+   - Stage 0
+   - Stage 1
+   - Stage 2
+   - Stage 3
+5. The result is displayed in a modal popup.
 
-HTML5
+---
 
-CSS3
+## ▶️ How To Run The Project
 
-Pickle
+### 1️⃣ Clone the repository
 
-📂 Project Structure
-│── app.py
-│── model.pkl
-│── train_model.py
-│── templates/
-│     └── cancer.html
-│── README.md
-⚙️ How It Works
+### 2️⃣ Install dependencies
 
-User enters health-related values.
+### 3️⃣ Run the application
 
-Data is sent to the Flask backend.
+### 4️⃣ Open in browser
 
-The trained model predicts a numeric stage.
+---
 
-A mapping function converts numeric output into:
+## 🎯 Features
 
-Stage 0
+✔ Medical-themed professional UI  
+✔ Decimal input handling  
+✔ Input validation  
+✔ Stage mapping for user-friendly output  
+✔ Flask deployment ready  
 
-Stage 1
+---
 
-Stage 2
+## ⚠ Disclaimer
 
-Stage 3
+This tool provides predictive analysis based on model training data.  
+It is **not** a medical diagnosis and should not replace professional medical advice.
 
-The result is displayed in a modal popup.
+---
 
-▶️ How To Run The Project
-1. Clone the repository
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
-2. Install dependencies
-pip install flask numpy scikit-learn
-3. Run the application
-python app.py
-4. Open in browser
-http://127.0.0.1:5000
-🎯 Features
-
-✔ Medical-themed professional UI
-✔ Decimal input handling
-✔ Input validation
-✔ Stage mapping for user-friendly output
-✔ Flask deployment ready
-
-⚠ Disclaimer
-
-This tool provides predictive analysis based on model training data.
-It is not a medical diagnosis and should not replace professional medical advice.
-
-👨‍💻 Author
+## 👨‍💻 Author
 
 Shivanshu Manna
+
+## 📂 Project Structure
