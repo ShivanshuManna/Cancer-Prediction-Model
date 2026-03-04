@@ -1,0 +1,232 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Predict</title>
+</head>
+<body>
+     <form action="/predict" method="post">
+        <label for="">Genetic_Risk</label>
+        <input type="text" name="genetic risk" id="">
+        <label for="">Air_Pollution</label>
+        <input type="text" name="air pollution" id="">
+        <label for="">Alcohol_Use</label>
+        <input type="text" name="alcohol use" id="">
+        <label for="">Smoking</label>
+        <input type="text" name="smoking" id="">
+        <label for="">Obesity_Level</label>
+        <input type="text" name="obesity level" id="">
+
+        <input type="submit" value="Predict">
+    </form>
+        <h2>{{ Prediction_text}}</h2>
+
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancer Risk Assessment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        }
+
+        .medical-card {
+            width: 420px;
+            padding: 35px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .medical-card h2 {
+            margin-bottom: 25px;
+            color: #0d47a1;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #1565c0;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #cfd8dc;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #1565c0;
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #1565c0;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .footer-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #546e7a;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content h3 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #1565c0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #0d47a1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="medical-card">
+    <h2>🏥Cancer Risk Assessment</h2>
+
+    <form action="/predict" method="post">
+
+        <div class="input-group">
+            <label>Genetic Risk (0 - 10)</label>
+            <input type="number" name="genetic_risk" step="0.01" min="0" max="10" required>
+        </div>
+
+        <div class="input-group">
+            <label>Air Pollution Level (0 - 10)</label>
+            <input type="number" name="air_pollution" step="0.1" min="0" max="10" required>
+        </div>
+
+        <div class="input-group">
+            <label>Alcohol Use (0 - 10)</label>
+            <input type="number" name="alcohol_use" step="0.1" min="0" max="10" required>
+        </div>
+
+        <div class="input-group">
+            <label>Smoking (0 - 10)</label>
+            <input type="number" name="smoking" step="0.1" min="0" max="10" required>
+        </div>
+
+        <div class="input-group">
+            <label>Obesity Level (0 - 10)</label>
+            <input type="number" name="obesity_level" step="0.1" min="0" max="10" required>
+        </div>
+
+        <button type="submit">Analyze Cancer Stage</button>
+    </form>
+
+    <div class="footer-note">
+        This assessment is predictive and not a medical diagnosis.
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="resultModal">
+    <div class="modal-content">
+        <h3>Assessment Result</h3>
+        <p>{{ Prediction_text }}</p>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+{% if Prediction_text %}
+<script>
+    document.getElementById("resultModal").style.display = "flex";
+</script>
+{% endif %}
+
+<script>
+    function closeModal() {
+        document.getElementById("resultModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
